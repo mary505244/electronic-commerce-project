@@ -1,0 +1,39 @@
+# 描述Compose文件的版本信息
+version: '3.8'
+
+# 定义服务，可以多个
+services:
+  react-admin-server:
+    build: # 指定根据哪个Dockerfile构建容器
+      context: ./
+      dockerfile: react-admin-server/Dockerfile
+    image: react-admin-server  #镜像名称
+    container_name: react-admin-server
+    environment:
+      - TZ=Asia/Shanghai
+    command:
+      - --rm
+    ports: # 宿主机和容器的端口映射关系
+      - "5000:5000" # 左边宿主机端口:右边容器端口
+    networks: # 配置容器连接的网络，引用顶级networks下的条目
+      - backend
+    restart: always
+    depends_on:
+      - mongodb
+  mongodb: # mysql服务
+    image: mongo
+    container_name: mongo
+    # environment:
+      # - MONGO_INITDB_ROOT_USERNAME=root
+      # - MONGO_INITDB_ROOT_PASSWORD=123456
+    ports: # 宿主机和容器的端口映射关系
+      - "27017:27017" # 左边宿主机端口:右边容器端口
+    networks: # 配置容器连接的网络，引用顶级networks下的条目
+      - backend
+    restart: always
+# 定义网络，可以多个，如果不声明，默认会创建一个网络名称为“工程名称_default”的bridge网络
+networks:
+  backend: # 一个具体网络的条目名称
+    name: backend # 网络名称，默认为“工程名称_网络条目名称”
+    driver: bridge # 网络模式，默认为bridge
+
