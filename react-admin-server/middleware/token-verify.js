@@ -15,7 +15,7 @@ module.exports = function (req, res, next) {
   }
 
   // 其他所有请求都要验证token
-  let token = req.headers['authorization'];  // bearer_token值
+  let token = req.headers['authorization'];  // sideProject_token值
 
   // 没有token
   if (!token) {
@@ -25,7 +25,7 @@ module.exports = function (req, res, next) {
     })
   }
 
-  // 一开始值： bearer token  --> 截取后面token
+  // 一开始值： sideProject token  --> 截取后面token
   token = token.substr(token.indexOf(' ') + 1);
 
   console.log(token);

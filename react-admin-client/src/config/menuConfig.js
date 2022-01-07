@@ -3,7 +3,8 @@
 */
 const menuList = [
     {
-        title: '首页', //* 菜单标题名称
+        // title: '首頁', //* 菜单标题名称
+        title: '',
         key: 'home', //展开的key
         path: '/admin/home', //* 对应的path
         icon: 'HomeOutlined' //* 图标组件名称

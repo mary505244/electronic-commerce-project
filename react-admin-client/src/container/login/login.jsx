@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Form, Input, Button,message } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined  } from '@ant-design/icons';
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom';
 
 import {reqLogin} from '../../api'
 import {saveUserAndToken} from '../../redux/actions/login'
@@ -12,7 +13,12 @@ import lipstick from './imgs/lipstick.svg'
 
 const {Item} = Form
 
-
+@connect(
+    state => ({isLogin: state.login.isLogin}),
+    {
+        saveUserAndToken
+    }
+)
  class Login extends Component {
 
      /**
@@ -23,11 +29,11 @@ const {Item} = Form
      onFinish = async(values) => {
         const {username, password} = values;
         let result = await reqLogin(username, password);
-        console.log(result);
-        const {status, msg} = result.data;
+        // console.log(result);
+        const {status, msg} = result;
         if (status === 0) {
             //服务器返回的user信息和token信交由redux管理
-            const {user, token} = result.data.data;
+            const {user, token} = result.data;
             this.props.saveUserAndToken({user, token});
             //提示登录成功
             message.success('登入成功！');
@@ -45,6 +51,10 @@ const {Item} = Form
 
 
     render() {
+        const {isLogin} = this.props
+        if (isLogin){
+            return <Redirect to="/admin/home" />
+        }
         return (
             <div className='login'>
                 <header>
@@ -90,10 +100,11 @@ const {Item} = Form
     }
 }
 
-export default connect(
-    state => ({isLogin: state.login.isLogin}),
-    // state => {},
-    {
-        saveUserAndToken
-    }
-)(Login)
+export default Login
+
+// export default connect(
+//     state => ({isLogin: state.login.isLogin}),
+//     {
+//         saveUserAndToken
+//     }
+// )(Login)

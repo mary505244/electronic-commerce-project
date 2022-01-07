@@ -4,4 +4,13 @@ import {BASE_URL, A_MAP_URL, CITY_CODE, A_MAP_KEY} from '../config/index';
 
 //登入
 export const reqLogin = (username, password) => (axios.post(`${BASE_URL}/login`, {username, password}))
-// export const reqLogin = (username, password) => (axios.post('login', {username, password}))
+
+// 高德地圖天氣請求
+export const reqWeather = () => (axios.get(`${A_MAP_URL}/v3/weather/weatherInfo`, {
+    params: {
+        key: A_MAP_KEY,
+        city: CITY_CODE,
+        output: 'JSON',
+        extensions: 'base'
+    }
+}))

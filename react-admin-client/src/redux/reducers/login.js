@@ -6,6 +6,7 @@ import {LOGIN_FLAG_USER, LOGIN_FLAG_TOKEN} from '../../config'
 //初始化的時候，從Local Storage中獲取用戶的信息
 let user = store.get(LOGIN_FLAG_USER);
 let token = store.get(LOGIN_FLAG_TOKEN);
+
 const initState = {
     user: user || {},
     token: token || '',

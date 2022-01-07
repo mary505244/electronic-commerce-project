@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {Layout} from 'antd';
 // import LeftNav from "./LeftNav";
-// import Header from "./Header";
+import Header from "./Header";
 import Home from "../../components/Home";
 // import Category from "../Category";
 // import Product from "../Product";
@@ -21,33 +21,28 @@ const {Footer, Sider, Content} = Layout;
 /**
  * 后台管理主路由组件
  */
-// @connect(
-//     state => ({userInfo: state.login}),
-// )
+@connect(
+    state => ({userInfo: state.login})
+)
 class Admin extends Component {
 
-    // componentDidMount(){
-    //     console.log(this.props.userInfo.user.username)
-    // }
+
 
     render() {
         const {isLogin} = this.props.userInfo;
         if (!isLogin) {
             //如果没有登录，跳转到登录页面
             return <Redirect to="/login"/>
-            // this.props.history.replace("/login");
-        }else{
+        }
         return (
             <Layout>
                 <Sider>
                     {/* <LeftNav/> */}
                 </Sider>
                 <Layout>
-                    {/* <Header/> */}
+                    <Header/>
                     <Content style={{margin: '20px', backgroundColor: '#fff'}}>
                         <Switch>
-                            {/* { <Route path="/admin" component={Admin}/> } */}
-
                              <Route path="/admin/home" component={Home}/>
                             {/* <Route path="/admin/products/category" component={Category}/>
                             <Route path="/admin/products/product" exact={true} component={Product}/>
@@ -59,25 +54,23 @@ class Admin extends Component {
                             <Route path="/admin/charts/line" component={ChartsLine}/>
                             <Route path="/admin/charts/pie" component={ChartsPie}/> */}
                             <Redirect to="/admin/home"/>
-                            {/* <Redirect to="/admin"/> */}
                         </Switch>
                     </Content>
                     <Footer style={{textAlign: 'center', color: '#1DA57A', fontWeight: 'bold'}}>
-                        推荐使用Chrome浏览器，可以获得更佳页面操作体验
-                
+                        Copyright © 2022 ٩(๑❛ᴗ❛๑)۶. All rights reserved.
                     </Footer>
                 </Layout>
             </Layout>
         );
-        }
+        
     }
 }
 
-// export default Admin
+export default Admin
 
-export default connect(
-    state => ({userInfo: state.login}),
-    {
+// export default connect(
+//     state => ({userInfo: state.login}),
+//     {
         
-    }
-)(Admin)
+//     }
+// )(Admin)
