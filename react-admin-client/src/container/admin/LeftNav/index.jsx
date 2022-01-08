@@ -115,7 +115,7 @@ class LeftNav extends Component {
                 <Menu defaultSelectedKeys={selectedKey}
                       selectedKeys={selectedKey}
                       defaultOpenKeys={openKeys}
-                      mode="vertical" theme="light">
+                      mode="inline" theme='dark'>
                       
                     {
                         this.createMenu(newMenuList)

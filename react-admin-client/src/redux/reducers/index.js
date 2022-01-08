@@ -10,7 +10,7 @@ import menu from './menu'
 //引入為Product組件服務的reducer
 // import product from './product'
 //引入為Category組件服務的reducer
-// import category from './category'
+import category from './category'
 
 //該對象的key決定著store裡保存該狀態的key
 //該對象的value決定著store裡保存該狀態的value
@@ -19,7 +19,7 @@ import menu from './menu'
 //匯總所有的reducer，變為一個總的reducer
 export default combineReducers({
     login,
-    menu
+    menu,
     // product,
-    // category
+    category
 })

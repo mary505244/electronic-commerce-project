@@ -4,7 +4,7 @@ import {Layout} from 'antd';
 import LeftNav from "./LeftNav";
 import Header from "./Header";
 import Home from "../../components/Home";
-// import Category from "../Category";
+import Category from "../Category";
 // import Product from "../Product";
 // import ProductAddUpdate from '../Product/AddUpdate'
 // import ProductView from '../Product/View'
@@ -43,12 +43,12 @@ class Admin extends Component {
                     <Header/>
                     <Content style={{margin: '20px', backgroundColor: '#fff'}}>
                         <Switch>
-                             <Route path="/admin/home" component={Home}/>
-                            {/* <Route path="/admin/products/category" component={Category}/>
-                            <Route path="/admin/products/product" exact={true} component={Product}/>
+                            <Route path="/admin/home" component={Home}/>
+                            <Route path="/admin/products/category" component={Category}/>
+                            {/* <Route path="/admin/products/product" exact={true} component={Product}/>
                             <Route path="/admin/products/product/addUpdate" component={ProductAddUpdate}/>
-                            <Route path="/admin/products/product/view" component={ProductView}/>  */}
-                            {/* <Route path="/admin/user" component={User}/> */}
+                            <Route path="/admin/products/product/view" component={ProductView}/> 
+                            <Route path="/admin/user" component={User}/> */} */}
                             {/* <Route path="/admin/role" component={Role}/>
                             <Route path="/admin/charts/bar" component={ChartsBar}/>
                             <Route path="/admin/charts/line" component={ChartsLine}/>
@@ -56,7 +56,7 @@ class Admin extends Component {
                             <Redirect to="/admin/home"/>
                         </Switch>
                     </Content>
-                    <Footer style={{textAlign: 'center', color: '#1DA57A', fontWeight: 'bold'}}>
+                    <Footer style={{textAlign: 'center', color: '#c95c6e', fontWeight: 'bold'}}>
                         Copyright © 2022 ٩(๑❛ᴗ❛๑)۶. All rights reserved.
                     </Footer>
                 </Layout>
