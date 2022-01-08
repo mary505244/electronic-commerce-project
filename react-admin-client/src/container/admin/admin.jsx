@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {Layout} from 'antd';
-// import LeftNav from "./LeftNav";
+import LeftNav from "./LeftNav";
 import Header from "./Header";
 import Home from "../../components/Home";
 // import Category from "../Category";
@@ -37,7 +37,7 @@ class Admin extends Component {
         return (
             <Layout>
                 <Sider>
-                    {/* <LeftNav/> */}
+                    <LeftNav/>
                 </Sider>
                 <Layout>
                     <Header/>

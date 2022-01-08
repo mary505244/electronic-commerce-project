@@ -303,7 +303,7 @@ db.getCollection("roles").insert([ {
         "line",
         "pie"
     ],
-    name: "图表管理员",
+    name: "圖表管理员",
     "create_time": 1625034359699,
     __v: NumberInt("0"),
     "auth_name": "admin",
@@ -329,7 +329,7 @@ db.getCollection("roles").insert([ {
     menus: [
         "home"
     ],
-    name: "首页管理员",
+    name: "首頁管理员",
     "create_time": 1625034949872,
     __v: NumberInt("0"),
     "auth_name": "admin",
