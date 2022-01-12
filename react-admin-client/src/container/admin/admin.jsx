@@ -5,11 +5,11 @@ import LeftNav from "./LeftNav";
 import Header from "./Header";
 import Home from "../../components/Home";
 import Category from "../Category";
-// import Product from "../Product";
-// import ProductAddUpdate from '../Product/AddUpdate'
-// import ProductView from '../Product/View'
-// import User from "../User";
-// import Role from "../Role";
+import Product from "../Product";
+import ProductAddUpdate from '../Product/AddUpdate'
+import ProductView from '../Product/View'
+import User from "../User";
+import Role from "../Role";
 // import ChartsBar from '../Charts/Bar'
 // import ChartsLine from "../Charts/Line";
 // import ChartsPie from "../Charts/Pie";
@@ -45,12 +45,12 @@ class Admin extends Component {
                         <Switch>
                             <Route path="/admin/home" component={Home}/>
                             <Route path="/admin/products/category" component={Category}/>
-                            {/* <Route path="/admin/products/product" exact={true} component={Product}/>
+                            <Route path="/admin/products/product" exact={true} component={Product}/>
                             <Route path="/admin/products/product/addUpdate" component={ProductAddUpdate}/>
                             <Route path="/admin/products/product/view" component={ProductView}/> 
-                            <Route path="/admin/user" component={User}/> */} */}
-                            {/* <Route path="/admin/role" component={Role}/>
-                            <Route path="/admin/charts/bar" component={ChartsBar}/>
+                            <Route path="/admin/user" component={User}/> 
+                            <Route path="/admin/role" component={Role}/>
+                            {/* <Route path="/admin/charts/bar" component={ChartsBar}/>
                             <Route path="/admin/charts/line" component={ChartsLine}/>
                             <Route path="/admin/charts/pie" component={ChartsPie}/> */}
                             <Redirect to="/admin/home"/>

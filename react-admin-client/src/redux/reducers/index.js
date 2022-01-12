@@ -8,7 +8,7 @@ import login from './login'
 //引入為Admin組件（菜單）服務的reducer
 import menu from './menu'
 //引入為Product組件服務的reducer
-// import product from './product'
+import product from './product'
 //引入為Category組件服務的reducer
 import category from './category'
 
@@ -20,6 +20,6 @@ import category from './category'
 export default combineReducers({
     login,
     menu,
-    // product,
+    product,
     category
 })

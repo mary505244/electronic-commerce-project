@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Card, Button, Table, message, Modal, Form, Input} from "antd";
-import {FontSizeOutlined, PlusCircleOutlined} from "@ant-design/icons";
+import {FormOutlined, PlusCircleOutlined} from "@ant-design/icons";
 import {reqCategoryList, reqAddCategory, reqUpdateCategory} from '../../api'
 import {PAGE_SIZE} from '../../config'
 import {connect} from "react-redux";
@@ -148,20 +148,26 @@ class Category extends Component {
                 title: '商品分類名稱',
                 dataIndex: 'name',
                 key: 'name',
-                align: 'center',
-                className: 'name-columns'
+                className: 'nameColumns'
             },
             {
-                // title: '操作',
+                title: '',
                 key: 'operator',
+                className: 'operatorColumns',
+
+                            // <Button className="updateButton" size="small" type="dashed" icon={<FormOutlined/>} onClick={() => {
+                            //     this.handleShowUpdateModal(item)
+                            // }}>修改資訊</Button>
+
+
                 render: (item) => (
-                    <Button type="link" onClick={() => {
+                    // <Button type="link" onClick={() => {
+                    //     this.handleShowUpdateModal(item)
+                    // }}>修改分類</Button>
+                    <Button className="updateButton" size="middle" type="dashed" icon={<FormOutlined/>} onClick={() => {
                         this.handleShowUpdateModal(item)
                     }}>修改分類</Button>
-                ),
-                width: "30%",
-                align: 'center',
-                className: 'operator-columns'
+                )
             }
         ];
 
@@ -181,7 +187,7 @@ class Category extends Component {
                 <Card className="card" extra={<Button className="button" type="primary" onClick={this.handleShowAddModal}
                                      icon={<PlusCircleOutlined/>}>添加</Button>}>
                     <Table className="table" bordered={true} dataSource={dataSource} columns={columns} loading={isLoading} rowKey="_id"
-                           pagination={{defaultPageSize: PAGE_SIZE, showQuickJumper: true}}/>   
+                           pagination={{defaultPageSize: PAGE_SIZE, showQuickJumper: true, position:['bottomCenter']}} />   
                 </Card>
                 {/* 新增分类和修改分类 */}
                 <Modal title={`${title}分類`} visible={isModalVisible} onOk={this.handleOkModal}
