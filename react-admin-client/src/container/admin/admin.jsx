@@ -10,9 +10,9 @@ import ProductAddUpdate from '../Product/AddUpdate'
 import ProductView from '../Product/View'
 import User from "../User";
 import Role from "../Role";
-// import ChartsBar from '../Charts/Bar'
-// import ChartsLine from "../Charts/Line";
-// import ChartsPie from "../Charts/Pie";
+import ChartsBar from '../Charts/Bar'
+import ChartsLine from "../Charts/Line";
+import ChartsPie from "../Charts/Pie";
 import {connect} from "react-redux";
 // import './index.less'
 
@@ -50,9 +50,9 @@ class Admin extends Component {
                             <Route path="/admin/products/product/view" component={ProductView}/> 
                             <Route path="/admin/user" component={User}/> 
                             <Route path="/admin/role" component={Role}/>
-                            {/* <Route path="/admin/charts/bar" component={ChartsBar}/>
+                            <Route path="/admin/charts/bar" component={ChartsBar}/>
                             <Route path="/admin/charts/line" component={ChartsLine}/>
-                            <Route path="/admin/charts/pie" component={ChartsPie}/> */}
+                            <Route path="/admin/charts/pie" component={ChartsPie}/>
                             <Redirect to="/admin/home"/>
                         </Switch>
                     </Content>

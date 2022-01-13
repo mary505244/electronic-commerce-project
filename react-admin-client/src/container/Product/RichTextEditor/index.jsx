@@ -40,9 +40,13 @@ export default class RichTextEditor extends Component {
             <div>
                 <Editor
                     editorState={editorState}
-                    // wrapperClassName="demo-wrapper"
+                    wrapperClassName="demo-wrapper"
                     editorClassName="demo-editor"
                     onEditorStateChange={this.onEditorStateChange}
+                />
+                <textarea
+                    disabled
+                    value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
                 />
             </div>
         );
