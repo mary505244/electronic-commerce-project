@@ -29,7 +29,7 @@ const menuList = [
         ]
     },
     {
-        title: '用户管理',
+        title: '使用者管理',
         key: 'user',
         path: '/admin/user',
         icon: 'UsbOutlined'

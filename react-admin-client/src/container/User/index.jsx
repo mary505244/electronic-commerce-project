@@ -45,7 +45,7 @@ const {Option} = Select;
             const {username, password, email, phone, role_id} = await this.addFormRef.current.validateFields();
             const {status, msg} = await reqAddUser(username, password, email, phone, role_id);
             if (status === 0) {
-                message.success('新增用戶成功', 2);
+                message.success('新增使用者成功', 2);
                 this.setState({isShowAdd: false}, () => {
                     this.getUserList();
                     this.addFormRef.current.resetFields();
@@ -141,18 +141,9 @@ const {Option} = Select;
                 key: 'operator',
                 className:'operator',
                 render: (item) => {
-                    return (
-
-                        // <NavLink to={{pathname: '/admin/products/product/addUpdate', state: {id}}}>
-                        //     <Button className="updateButton" size="small" type="dashed" icon={<FormOutlined/>}>修改資訊</Button>
-                        // </NavLink>
-
-
-                        
-
-
+                    return (                       
                         <Fragment>
-                            <Button className="updateButton" size="small" type="dashed" icon={<FormOutlined/>}>修改資訊</Button>
+                            {/* <Button className="updateButton" size="small" type="dashed" icon={<FormOutlined/> }>修改資訊</Button><br/> */}
                             <Button className="viewButton" size="small" type="dashed" icon={<DeleteOutlined />} onClick={this.deleteUser(item)}>刪除使用者</Button>  
                         </Fragment>
                     );
@@ -173,7 +164,7 @@ const {Option} = Select;
                             //重置表單
                             this.addFormRef.current.resetFields();
                         })
-                    }}>添加用戶</Button>
+                    }}>添加使用者</Button>
                 }>
                     <Table bordered={true} rowKey={"_id"} dataSource={userList} columns={columns}
                         onChange={this.handleTableChange} pagination={{
@@ -182,7 +173,7 @@ const {Option} = Select;
                         }}/>
                 </Card>
                 {/* 添加用戶的模態框 */}
-                <Modal title={`添加用戶`} visible={isShowAdd} okText="確認" cancelText="取消" onOk={this.handleAddOkModal}
+                <Modal title={`添加使用者`} visible={isShowAdd} okText="確認" cancelText="取消" onOk={this.handleAddOkModal}
                     onCancel={() => {
                         this.setState({isShowAdd: false}, () => {
                             //重置表單
@@ -190,23 +181,23 @@ const {Option} = Select;
                         })
                 }}>
                     <Form ref={this.addFormRef} labelCol={{md: 4}} wrapperCol={{md: 16}}>
-                        <Form.Item label="用戶名" name="username"
-                                   rules={[{required: true, whitespace: true, message: '請輸入用戶名'}]}>
-                            <Input autoComplete="off" placeholder="請輸入商品名稱"/>
+                        <Form.Item label="使用者姓名" name="username"
+                                   rules={[{required: true, whitespace: true, message: '請輸入使用者姓名'}]}>
+                            <Input autoComplete="off" placeholder="請輸入使用者名稱"/>
                         </Form.Item>
                         <Form.Item label="密碼" name="password"
                                    rules={[{required: true, whitespace: true, message: '請輸入密碼'}]}>
-                            <Input type={"password"} autoComplete="off" placeholder="請輸入商品描述"/>
+                            <Input type={"password"} autoComplete="off" placeholder="請輸入密碼"/>
                         </Form.Item>
-                        <Form.Item label="郵箱" name="email">
-                            <Input autoComplete="off" placeholder="請輸入郵箱"/>
+                        <Form.Item label="Email" name="email">
+                            <Input autoComplete="off" placeholder="請輸入Email"/>
                         </Form.Item>
-                        <Form.Item label="電話" name="phone">
-                            <Input autoComplete="off" placeholder="請輸入電話"/>
+                        <Form.Item label="聯絡電話" name="phone">
+                            <Input autoComplete="off" placeholder="請輸入聯絡電話"/>
                         </Form.Item>
-                        <Form.Item label="角色" name="role_id"
-                                   rules={[{required: true, message: '請選擇一個角色'}]}>
-                            <Select allowClear placeholder={"請選擇一個角色"}>
+                        <Form.Item label="所屬角色" name="role_id"
+                                   rules={[{required: true, message: '請選擇所屬角色'}]}>
+                            <Select allowClear placeholder={"請選擇所屬角色"}>
                                 {
                                     roleList.map(role => (
                                         <Option key={role._id} value={role._id}>{role.name}</Option>
@@ -217,9 +208,9 @@ const {Option} = Select;
                     </Form>
                 </Modal>
                 {/* 修改用戶的模態框 */}
-                <Modal title={`修改用戶`} visible={false} okText="確認" cancelText="取消">
+                <Modal title={`修改使用者`} visible={false} okText="確認" cancelText="取消">
                     <Form>
-                        修改用戶
+                        修改使用者
                     </Form>
                 </Modal>
             </Fragment>

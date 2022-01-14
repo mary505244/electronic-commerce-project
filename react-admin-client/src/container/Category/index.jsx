@@ -49,9 +49,10 @@ class Category extends Component {
      * 显示新增分类的弹窗
      */
     handleShowAddModal = () => {
+        // this.formRef.current.resetFields();
         this.setState({
             operatorType: 0,
-            isModalVisible: true
+            isModalVisible: true,
         })
     }
 

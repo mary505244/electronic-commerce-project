@@ -122,3 +122,12 @@ export const reqAddUser = (username, password, email, phone, role_id) => (axios.
 
 //刪除用戶
 export const reqDeleteUser = (userId) => (axios.post(`${BASE_URL}/manage/user/delete`, {userId}))
+
+// 修改用戶
+// export const reqUpdateUser = (_id, username, email, phone, role_id) => (axios.post(`${BASE_URL}/manage/user/update`, {
+//     _id, 
+//     username, 
+//     email, 
+//     phone, 
+//     role_id
+// }))

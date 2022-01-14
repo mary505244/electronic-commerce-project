@@ -5,9 +5,7 @@ import { render } from 'nprogress';
 
 const ChartsPie = () => {
   const option = {
-    // color:["#fc236c", "#fc4c87", "#fa709e", "#f78fb2", "#faaac5"],
     color:["#d65882","#d67495","#d98da6","#d9a3b4", "#d9bac4"],
-    // color:["#d9bac4","#d9a3b4","#d98da6","#d67495","#d65882"],
     title : {
       text: '網站流量管道分析',
       textStyle: {

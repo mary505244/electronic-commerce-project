@@ -112,7 +112,7 @@ export default class PicturesWall extends Component {
                     onChange={this.handleChange} //onChange：图片状态改变的回调（图片上传中，图片被删除、图片成功上传）
                     headers={{Authorization: token}} //上传所需额外参数或返回上传额外参数的方法
                 >
-                    {fileList.length >= 4 ? null : uploadButton}
+                    {fileList.length >= 6 ? null : uploadButton}
                 </Upload>
                 <Modal
                     visible={previewVisible}

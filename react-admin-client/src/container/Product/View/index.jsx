@@ -117,7 +117,7 @@ render() {
                             {
                                 imgs.map(item => {
                                     return (
-                                        <img style={{width:'250px'}} key={item} src={`${BASE_URL}/upload/` + item} alt="商品圖片"/>
+                                        <img style={{width:'150px'}} key={item} src={`${BASE_URL}/upload/` + item} alt="商品圖片"/>
                                     )
                                 })
                             }
