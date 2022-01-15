@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactECharts from 'echarts-for-react';
-
 import "echarts/i18n/langFR";
 
 const ChartsLine = () => {
   const option = {
+    color:["#d67495"],
     title: {
-      text: 'ECharts 入門示例'
+      text: '每月營業額報告',
+      textStyle: {
+        fontSize: '25px',
+        color:'#94516b'
+      },
+      x:'center'
     },
     toolbox: {
         feature: {
@@ -17,22 +22,23 @@ const ChartsLine = () => {
     },
     tooltip: {},
     legend: {
-      data:['銷量']
+      left: 'left',
+      data:['每月營收']
     },
     xAxis: {
-      data: ['襯衫', '羊毛衫', '雪紡衫', '褲子', '高跟鞋', '襪子']
+      data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
     },
     yAxis: {},
     series: [{
-      name: '銷量',
+      name: '每月營收',
       type: 'line',
-      data: [5, 20, 36, 10, 10, 20]
+      data: [180000, 220000, 160000, 250000, 350000, 400000, 300000, 500000, 600000, 550000 ,700000, 1000000]  
     }]
   };
 
   return <ReactECharts
     option={option}
-    style={{ height: 400 }}
+    style={{ height: 400, width:1000, backgroundColor:'#f5dae4',borderRadius:'10px'}}
     opts={{ locale: 'FR' }}
   />;
 };

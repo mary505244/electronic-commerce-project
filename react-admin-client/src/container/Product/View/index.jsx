@@ -88,31 +88,31 @@ render() {
         <List size={"large"}>
                     <List.Item>
                         <Typography.Text>
-                            <span className="productName">商品名稱：</span>
-                            <span>{name}</span>
+                            <span className="Name">商品名稱：</span>
+                            <span className="nameValue">{name}</span>
                         </Typography.Text>
                     </List.Item>
                     <List.Item>
                         <Typography.Text>
-                            <span className="productDesc">商品描述：</span>
-                            <span>{desc}</span>
+                            <span className="Desc">商品描述：</span>
+                            <span className="descValue">{desc}</span>
                         </Typography.Text>
                     </List.Item>
                     <List.Item>
                         <Typography.Text>
-                            <span className="productPrice">商品價格：</span>
-                            <span>{price}</span>
+                            <span className="Price">商品價格：</span>
+                            <span className="priceValue">{price}</span>
                         </Typography.Text>
                     </List.Item>
                     <List.Item>
                         <Typography.Text>
-                            <span className="productCategory">所屬分類：</span>
-                            <span>{categoryName}</span>
+                            <span className="Category">所屬分類：</span>
+                            <span className="categoryValue">{categoryName}</span>
                         </Typography.Text>
                     </List.Item>
                     <List.Item>
                     <Typography.Text>
-                            <span className="productPicture">商品圖片：</span>
+                            <span className="Picture">商品圖片：</span>
                             <span>
                             {
                                 imgs.map(item => {
@@ -126,7 +126,7 @@ render() {
                     </List.Item>
                     <List.Item>
                         <Typography.Text>
-                            <span className="productDetail">商品詳情：</span>
+                            <span className="Detail">商品詳情：</span>
                             <span dangerouslySetInnerHTML={{__html: detail}}/>
                         </Typography.Text>
 

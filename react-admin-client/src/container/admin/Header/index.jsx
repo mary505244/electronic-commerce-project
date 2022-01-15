@@ -157,7 +157,7 @@ class Header extends Component {
                     </Button>
                 </div>
                 <div className="header-bottom">
-                    <div className="header-bottom-left">{this.props.title || title}</div>
+                    {/* <div className="header-bottom-left">{this.props.title || title}</div> */}
                 </div>
             </div>
         );

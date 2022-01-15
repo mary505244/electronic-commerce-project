@@ -1,7 +1,5 @@
-import React, { useState  } from 'react';
+import React from 'react';
 import ReactECharts from 'echarts-for-react';
-import { Alert } from 'antd';
-import { render } from 'nprogress';
 
 const ChartsPie = () => {
   const option = {

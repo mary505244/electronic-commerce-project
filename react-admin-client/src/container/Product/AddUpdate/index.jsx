@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {reqCategoryList, reqAddProduct, reqProductView, reqUpdateProduct} from '../../../api'
 import PicturesWall from '../PicturesWall'
 import RichTextEditor from "../RichTextEditor";
+import './index.less';
 
 const {Option} = Select;
 
@@ -23,31 +24,33 @@ class AddUpdate extends Component {
     formRef = React.createRef();
 
     state = {
-        title: '',//标题 新增或修改
-        categoryList: [], //商品分类的列表
-        categoryId: '',//分类的id
-        name: '',//商品名称
+        title: '',//標題 新增或修改
+        categoryList: [], //商品分類的列表
+        categoryId: '',//分類的id
+        name: '',//商品名稱
         desc: '',//商品描述
-        price: 0,//商品价格
-        detail: '',//商品详情
-        imgs: [], //图片
+        price: 0,//商品價格
+        detail: '',//商品詳情
+        imgs: [], //圖片
     }
 
     componentDidMount = async () => {
-        //判断标题
+        //判斷標題
         const {id} = this.props.location.state;
+        // console.log(this.props)
         if (id) {
             const {status, data, msg} = await reqProductView(id);
             if (status === 0) {
                 const {name, desc, price, categoryId, detail, imgs} = data;
-                this.setState({name, desc, price, categoryId, detail, imgs, title: '修改'}, () => {
-                    /*
-                    !这边是巨坑，需要注意,需要初始化表单列表
-                    */
+                // this.setState({name, desc, price, categoryId, detail, imgs, title: '修改'}, () => {
+                this.setState({name, desc, price, categoryId}, () => {
+                    //!大坑，需要注意,需要初始化表單列表                  
                     this.formRef.current.resetFields();
-                    //回显照片
+                });
+                this.setState({detail, imgs, title: '修改'}, () => {
+                    //回顯照片
                     this.picturesWall.current.setImgArr(imgs);
-                    //回显富文本
+                    //回顯富文本
                     this.richTextEditor.current.setRichText(detail);
                 });
             } else {
@@ -56,7 +59,7 @@ class AddUpdate extends Component {
         } else {
             this.setState({title: '添加'});
         }
-        //初始化商品分类
+        //初始化商品分類
         let reduxCategoryList = this.props.categoryList;
         if (reduxCategoryList.length) {
             this.setState({
@@ -70,11 +73,11 @@ class AddUpdate extends Component {
 
     handleFinish = async (values) => {
         const {id} = this.props.location.state;
-        if (id) { //修改的逻辑
+        if (id) { //修改的邏輯
             const {categoryId, name, price, desc, productStatus} = values;
-            //获取图片
+            //獲取圖片
             let imgArr = this.picturesWall.current.getImgArr();
-            //获取富文本内容
+            //獲取富文本內容
             let richTextEditor = this.richTextEditor.current.getRichText();
             const {
                 status,
@@ -83,16 +86,16 @@ class AddUpdate extends Component {
             if (status === 0) {
                 //提示
                 message.success("更新商品成功", 2);
-                //跳转到商品管理页面
+                //跳轉到商品管理頁面
                 this.props.history.replace('/admin/products/product');
             } else {
                 message.error(msg, 2);
             }
-        } else { //新增的逻辑
+        } else { //新增的邏輯
             const {categoryId, name, price, desc, productStatus} = values;
-            //获取图片
+            //獲取圖片
             let imgArr = this.picturesWall.current.getImgArr();
-            //获取富文本内容
+            //獲取富文本內容
             let richTextEditor = this.richTextEditor.current.getRichText();
             const {
                 status,
@@ -101,7 +104,7 @@ class AddUpdate extends Component {
             if (status === 0) {
                 //提示
                 message.success("新增商品成功", 2);
-                //跳转到商品管理页面
+                //跳轉到商品管理頁面
                 this.props.history.replace('/admin/products/product');
             } else {
                 message.error(msg, 2);
@@ -110,7 +113,7 @@ class AddUpdate extends Component {
     }
 
     /**
-     * 向后台获取商品分类列表数据
+     * 向後台獲取商品分類列表數據
      */
     getCategoryList = async () => {
         const result = await reqCategoryList();
@@ -132,33 +135,33 @@ class AddUpdate extends Component {
             <Fragment>
                 <Card title={
                     <Fragment>
-                        <ArrowLeftOutlined style={{marginRight: '20px', color: '#1DA57A'}} onClick={() => {
+                        <ArrowLeftOutlined className="ArrowLeftOutlined" onClick={() => {
                             this.props.history.goBack()
                         }}/>
                         {`商品${title}`}
                     </Fragment>
                 }>
                     <Form labelCol={{md: 2}} wrapperCol={{md: 16}} onFinish={this.handleFinish} ref={this.formRef}>
-                        <Form.Item label="商品名称" name="name"
+                        <Form.Item label="商品名稱" name="name"
                                    initialValue={name || ''}
-                                   rules={[{required: true, whitespace: true, message: '请输入商品名称'}]}>
-                            <Input autoComplete="off" placeholder="请输入商品名称"/>
+                                   rules={[{required: true, whitespace: true, message: '請輸入商品名稱'}]}>
+                            <Input autoComplete="off" placeholder="請輸入商品名稱"/>
                         </Form.Item>
                         <Form.Item label="商品描述" name="desc"
                                    initialValue={desc || ''}
-                                   rules={[{required: true, whitespace: true, message: '请输入商品描述'}]}>
-                            <Input autoComplete="off" placeholder="请输入商品描述"/>
+                                   rules={[{required: true, whitespace: true, message: '請輸入商品描述'}]}>
+                            <Input autoComplete="off" placeholder="請輸入商品描述"/>
                         </Form.Item>
-                        <Form.Item label="商品价格" name="price"
+                        <Form.Item label="商品價格" name="price"
                                    initialValue={price || ''}
-                                   rules={[{required: true, message: '请输入商品价格'}]}>
-                            <Input type="number" autoComplete="off" addonBefore="￥" addonAfter="元"
-                                   placeholder="请输入商品价格，必须是数值"/>
+                                   rules={[{required: true, message: '請輸入商品價格'}]}>
+                            <Input type="number" autoComplete="off" addonBefore="＄" addonAfter="元"
+                                   placeholder="請輸入商品價格，必須是數值"/>
                         </Form.Item>
-                        <Form.Item label="商品分类" name="categoryId"
+                        <Form.Item label="商品分類" name="categoryId"
                                    initialValue={categoryId || ''}
-                                   rules={[{required: true, message: '请选择商品分类'}]}>
-                            <Select allowClear placeholder={"请选择商品分类"}>
+                                   rules={[{required: true, message: '請選擇商品分類'}]}>
+                            <Select allowClear placeholder={"請選擇商品分類"}>
                                 {
                                     categoryList.map(category => (
                                         <Option key={category._id} value={category._id}>{category.name}</Option>
@@ -166,10 +169,10 @@ class AddUpdate extends Component {
                                 }
                             </Select>
                         </Form.Item>
-                        <Form.Item label="商品图片">
+                        <Form.Item label="商品圖片" name="picture">
                             <PicturesWall ref={this.picturesWall}/>
                         </Form.Item>
-                        <Form.Item label="商品详情" wrapperCol={{md: 16}}>
+                        <Form.Item label="商品詳情" name="detail" wrapperCol={{md: 16}}>
                             <RichTextEditor ref={this.richTextEditor}/>
                         </Form.Item>
                         <Form.Item wrapperCol={{offset: 8}}>

@@ -38,6 +38,7 @@
     "screenfull": "^5.1.0",
     "simple-logging-system": "^1.0.3",
     "store": "^2.0.12",
+    "swiper": "^7.3.1",
     "web-vitals": "^2.0.1",
     "xxlogger": "^1.0.10"
   },

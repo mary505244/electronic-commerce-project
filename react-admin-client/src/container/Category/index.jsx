@@ -53,6 +53,7 @@ class Category extends Component {
         this.setState({
             operatorType: 0,
             isModalVisible: true,
+            updateModalCurrentValue:''
         })
     }
 

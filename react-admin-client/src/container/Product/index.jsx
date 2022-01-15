@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {Button, Card, Input, message, Select, Table} from "antd";
-import {PlusCircleOutlined, SearchOutlined, FormOutlined, ReconciliationOutlined, NotificationOutlined} from "@ant-design/icons";
+import {PlusCircleOutlined, SearchOutlined, FormOutlined, ReconciliationOutlined} from "@ant-design/icons";
 import {NavLink} from 'react-router-dom'
 import {PAGE_SIZE} from "../../config";
 import {reqProductPaginationList, reqProductUpdateStatus, reqProductSearchPaginationList} from '../../api'

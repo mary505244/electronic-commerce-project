@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {Button, Card, Form, Input, message, Modal, Select, Table} from "antd";
-import {ExclamationCircleOutlined, PlusCircleOutlined, DeleteOutlined , FormOutlined} from "@ant-design/icons";
+import {ExclamationCircleOutlined, PlusCircleOutlined, DeleteOutlined} from "@ant-design/icons";
 import dayjs from "dayjs";
 import {reqUserList, reqAddUser, reqDeleteUser} from '../../api'
 import {PAGE_SIZE} from "../../config";
