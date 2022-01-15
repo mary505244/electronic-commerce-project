@@ -9,6 +9,8 @@ import 'swiper/modules/scrollbar/scrollbar.min.css'
 import 'swiper/modules/effect-coverflow/effect-coverflow.min.css'
 import 'swiper/modules/mousewheel/mousewheel.min.css'
 
+import perfume from '../Home/imgs/perfume.svg'
+import lipstick from '../Home/imgs/lipstick.svg'
 import home0 from '../Home/imgs/home0.png'
 import home1 from '../Home/imgs/home1.png'
 import home2 from '../Home/imgs/home2.png'
@@ -20,6 +22,7 @@ import home7 from '../Home/imgs/home7.png'
 import home8 from '../Home/imgs/home8.png'
 import home9 from '../Home/imgs/home9.png'
 import home10 from '../Home/imgs/home10.png'
+
 import './index.less';
 
 
@@ -31,6 +34,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
+                <h2 className='swiperTitle'>年度大賞暢銷系列<img className='perfume' src={perfume} alt="perfume"/></h2>
                 <Swiper style={{
                     width:'100%',
                     paddingBottom:'10px'
@@ -74,13 +78,22 @@ export default class Home extends Component {
                 </Swiper>
 
 
-                <h2>Example 2</h2>
-                    <ul class="tags">
-                    <li><a href="#" class="tag">HTML</a></li>
-                    <li><a href="#" class="tag">CSS</a></li>
-                    <li><a href="#" class="tag">JavaScript</a></li>
-                    </ul>
+                <h2 className='tagTitle'><img className='lipstick' src={lipstick} alt="lipstick"/>熱搜美妝關鍵字Top</h2>
 
+                    <ul class="tags">
+                        {['溫和去角質','不含酒精','精華液','A醇','淡化斑點','改善皺紋',
+                        '淡化黑眼圈','水洗式','緊實','眼下細紋','噴霧式','提亮',
+                        '服貼','不浮粉','改善肌膚粗糙','淡疤','玻尿酸','橘色系',
+                        '改善泛紅','不卡粉','凝膠凝凍狀','J-Beauty','法國','裸色系','新品',
+                        '弱酸性','身體按摩油'
+                        
+                        ].map((i, el) => {
+                            // console.log(i, el)
+                            let tag = 'tag'+ Math.floor(Math.random()*3+1);
+                            console.log(tag)
+                            return <li key={el}><a href="#" className={tag}>{i}</a></li>;
+                        })}
+                    </ul>
             </div>
           );
     };   
