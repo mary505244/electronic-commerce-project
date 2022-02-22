@@ -1,7 +1,7 @@
 const RoleModel = require('../models/RoleModel');
 const {pageFilter} = require('../utils')
 /*
-注册角色管理路由
+註冊角色管理路由
 */
 module.exports = function (router) {
   // 添加角色
@@ -12,12 +12,12 @@ module.exports = function (router) {
         res.send({status: 0, data: role})
       })
       .catch(error => {
-        console.error('添加角色异常', error)
-        res.send({status: 1, msg: '添加角色异常, 请重新尝试'})
+        console.error('添加角色異常', error)
+        res.send({status: 1, msg: '添加角色異常, 請重新嘗試'})
       })
   })
 
-  // 获取角色列表
+  // 獲取角色列表
   router.get('/manage/role/list', (req, res) => {
     const {pageNum, pageSize} = req.query
     RoleModel.find({})
@@ -25,12 +25,12 @@ module.exports = function (router) {
         res.send({status: 0, data: pageFilter(roles.reverse(), pageNum, pageSize)})
       })
       .catch(error => {
-        console.error('获取角色列表异常', error)
-        res.send({status: 1, msg: '获取角色列表异常, 请重新尝试'})
+        console.error('獲取角色列表異常', error)
+        res.send({status: 1, msg: '獲取角色列表異常, 請重新嘗試'})
       })
   })
 
-  // 更新角色(设置权限)
+  // 更新角色(設置權限)
   router.post('/manage/role/update', (req, res) => {
     const role = req.body
     role.auth_time = Date.now()
@@ -40,8 +40,8 @@ module.exports = function (router) {
         res.send({status: 0, data: {...oldRole._doc, ...role}})
       })
       .catch(error => {
-        console.error('更新角色异常', error)
-        res.send({status: 1, msg: '更新角色异常, 请重新尝试'})
+        console.error('更新角色異常', error)
+        res.send({status: 1, msg: '更新角色異常, 請重新嘗試'})
       })
   })
 }

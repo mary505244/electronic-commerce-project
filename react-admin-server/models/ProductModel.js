@@ -1,22 +1,22 @@
 /*
-能操作products集合数据的Model
+能操作products集合數據的Model
  */
 // 1.引入mongoose
 const mongoose = require('mongoose')
 
-// 2.字义Schema(描述文档结构)
+// 2.字義Schema(描述文檔結構)
 const productSchema = new mongoose.Schema({
-  categoryId: {type: String, required: true}, // 所属分类的id
-  name: {type: String, required: true}, // 名称
-  price: {type: Number, required: true}, // 价格
+  categoryId: {type: String, required: true}, // 所屬分類的id
+  name: {type: String, required: true}, // 名稱
+  price: {type: Number, required: true}, // 價格
   desc: {type: String},
-  status: {type: Number, default: 1}, // 商品状态: 1:在售, 2: 下架了
-  imgs: {type: Array, default: []}, // n个图片文件名的json字符串
+  status: {type: Number, default: 1}, // 商品狀態: 1:在售, 2: 下架了
+  imgs: {type: Array, default: []}, // n個圖片文件名的json字符串
   detail: {type: String}
 })
 
 
-// 3. 定义Model(与集合对应, 可以操作集合)
+// 3. 定義Model(與集合對應, 可以操作集合)
 const ProductModel = mongoose.model('products', productSchema)
 
 // 4. 向外暴露Model

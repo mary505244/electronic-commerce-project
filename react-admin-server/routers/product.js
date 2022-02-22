@@ -2,11 +2,11 @@ const ProductModel = require('../models/ProductModel');
 const {pageFilter} = require('../utils')
 
 /* 
-注册商品管理路由
+註冊商品管理路由
 */
 module.exports = function (router) {
   
-  // 添加产品
+  // 添加產品
   router.post('/manage/product/add', (req, res) => {
     const product = req.body
     console.log('product', product)
@@ -15,7 +15,7 @@ module.exports = function (router) {
         if (p) {
           res.send({
             status: 1,
-            msg: '此名称商品已存在'
+            msg: '此名稱商品已存在'
           })
         } else {
           ProductModel.create(product)
@@ -26,10 +26,10 @@ module.exports = function (router) {
               })
             })
             .catch(error => {
-              console.error('添加产品异常', error)
+              console.error('添加產品異常', error)
               res.send({
                 status: 1,
-                msg: '添加产品异常, 请重新尝试'
+                msg: '添加產品異常, 請重新嘗試'
               })
             })
         }
@@ -37,7 +37,7 @@ module.exports = function (router) {
     
   })
 
-  // 获取产品分页列表
+  // 獲取產品分頁列表
   router.get('/manage/product/list', (req, res) => {
     const {pageNum, pageSize} = req.query
     ProductModel.find({})
@@ -45,12 +45,12 @@ module.exports = function (router) {
         res.send({status: 0, data: pageFilter(products.reverse(), pageNum, pageSize)})
       })
       .catch(error => {
-        console.error('获取商品列表异常', error)
-        res.send({status: 1, msg: '获取商品列表异常, 请重新尝试'})
+        console.error('獲取商品列表異常', error)
+        res.send({status: 1, msg: '獲取商品列表異常, 請重新嘗試'})
       })
   })
 
-  // 搜索产品列表
+  // 搜索產品列表
   router.get('/manage/product/search', (req, res) => {
     const {pageNum, pageSize, searchName, productName, productDesc} = req.query
     let condition = {}
@@ -64,12 +64,12 @@ module.exports = function (router) {
         res.send({status: 0, data: pageFilter(products, pageNum, pageSize)})
       })
       .catch(error => {
-        console.error('搜索商品列表异常', error)
-        res.send({status: 1, msg: '搜索商品列表异常, 请重新尝试'})
+        console.error('搜索商品列表異常', error)
+        res.send({status: 1, msg: '搜索商品列表異常, 請重新嘗試'})
       })
   })
 
-  // 根据商品id获取商品对象
+  // 根據商品id獲取商品對象
   router.get('/manage/product/info', (req, res) => {
     const productId = req.query.productId
     ProductModel.findOne({ _id: productId })
@@ -80,15 +80,15 @@ module.exports = function (router) {
         })
       })
       .catch(error => {
-        console.error('获取商品异常', error)
+        console.error('獲取商品異常', error)
         res.send({
           status: 1,
-          msg: '获取商品异常'
+          msg: '獲取商品異常'
         })
       })
   })
 
-  // 更新产品
+  // 更新產品
   router.post('/manage/product/update', (req, res) => {
     const product = req.body
     ProductModel.findOneAndUpdate({_id: product._id}, product)
@@ -96,12 +96,12 @@ module.exports = function (router) {
         res.send({status: 0})
       })
       .catch(error => {
-        console.error('更新商品异常', error)
-        res.send({status: 1, msg: '更新商品名称异常, 请重新尝试'})
+        console.error('更新商品異常', error)
+        res.send({status: 1, msg: '更新商品名稱異常, 請重新嘗試'})
       })
   })
 
-  // 更新产品状态(上架/下架)
+  // 更新產品狀態(上架/下架)
   router.post('/manage/product/updateStatus', (req, res) => {
     const {productId, status} = req.body
     ProductModel.findOneAndUpdate({_id: productId}, {status})
@@ -109,8 +109,8 @@ module.exports = function (router) {
         res.send({status: 0})
       })
       .catch(error => {
-        console.error('更新产品状态异常', error)
-        res.send({status: 1, msg: '更新产品状态异常, 请重新尝试'})
+        console.error('更新產品狀態異常', error)
+        res.send({status: 1, msg: '更新產品狀態異常, 請重新嘗試'})
       })
   })
 }

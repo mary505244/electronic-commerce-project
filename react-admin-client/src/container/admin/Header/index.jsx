@@ -28,17 +28,17 @@ class Header extends Component {
     }
 
     componentDidMount = () => {
-        //获取天气数据
+        //獲取天氣數據
         this.getWeather();
-        //获取系统时间
+        //獲取系統時間
         this.getSystemTime();
-        //刷新的时候，调用获取标题头
+        //刷新的時候，調用獲取標題頭
         let title = this.getTitle(menuList);
         this.setState({title})
     }
 
     componentWillUnmount() {
-        //清除定时器
+        //清除定時器
         clearInterval(this.timer);
     }
     
@@ -55,7 +55,7 @@ class Header extends Component {
         });
     }
 
-    //获取天气
+    //獲取天氣
     getWeather = async () => {
 
         const {status, lives} = await reqWeather();
@@ -66,9 +66,9 @@ class Header extends Component {
         }
     }
 
-    //获取系统时间
+    //獲取系統時間
     getSystemTime = () => {
-        //每隔1秒获取当前时间，并更新状态中的currentTime
+        //每隔1秒獲取當前時間，並更新狀態中的currentTime
         this.timer = setInterval(() => {
             this.setState({
                 currentTime: dayjs().format("YYYY/MM/DD HH:mm"),
@@ -77,21 +77,21 @@ class Header extends Component {
     }
 
     /**
-     * 获取当前的显示的标题，根据当前点击的路径到menuList中进行匹配
+     * 獲取當前的顯示的標題，根據當前點擊的路徑到menuList中進行匹配
      *
-     * 此方法应该只有两个场景下才能调用：
-     * ①用户点击菜单的时候，需要调用此方法
-     * ②刷新的时候，需要调用此方法
+     * 此方法應該只有兩個場景下才能調用：
+     * ①用戶點擊菜單的時候，需要調用此方法
+     * ②刷新的時候，需要調用此方法
      *
      * @param menuList
      * @returns {string}
      */
     getTitle = (menuList) => {
-        //获取当前点击的路径
+        //獲取當前點擊的路徑
         const {pathname} = this.props.location;
-        //获取key
+        //獲取key
         const key = this.selectedKey(pathname,menuList);
-        //标题
+        //標題
         let title = '';
         menuList.forEach(item => {
             if (item.children instanceof Array) {
@@ -113,9 +113,9 @@ class Header extends Component {
 
 
     /**
-     * 获取selectedKey
+     * 獲取selectedKey
      *
-     * 遍历整个menuList，模糊匹配获取最近的路由key
+     * 遍歷整個menuList，模糊匹配獲取最近的路由key
      * @param {*} pathname
      * @param {*} menuList
      */

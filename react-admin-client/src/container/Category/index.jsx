@@ -17,11 +17,11 @@ class Category extends Component {
 
     state = {
         dataSource: [],
-        isModalVisible: false, //模态框是否显示，默认为隐藏
-        operatorType: 0, //操作类型 0表示新增，1表示修改
-        isLoading: true, //表格加载效果，默认为true，表示加载
-        updateModalCurrentId: '', //更新模态框中的Input组件的id值
-        updateModalCurrentValue: '' //更新模态框中的Input组件的value值
+        isModalVisible: false, //模態框是否顯示，默認為隱藏
+        operatorType: 0, //操作類型 0表示新增，1表示修改
+        isLoading: true, //表格加載效果，默認為true，表示加載
+        updateModalCurrentId: '', //更新模態框中的Input組件的id值
+        updateModalCurrentValue: '' //更新模態框中的Input組件的value值
     }
 
     formRef = React.createRef();
@@ -30,7 +30,7 @@ class Category extends Component {
         this.getCategoryList();
     }
 
-    //获取分类列表数据
+    //獲取分類列表數據
     getCategoryList = async () => {
         const {data, status, msg} = await reqCategoryList();
 
@@ -46,7 +46,7 @@ class Category extends Component {
     }
 
     /**
-     * 显示新增分类的弹窗
+     * 顯示新增分類的彈窗
      */
     handleShowAddModal = () => {
         // this.formRef.current.resetFields();
@@ -58,56 +58,56 @@ class Category extends Component {
     }
 
     /**
-     * 显示更新分类的弹窗
+     * 顯示更新分類的彈窗
      */
-    handleShowUpdateModal = (item) => {
-        //回显的数据
+     handleShowUpdateModal = (item) => {
+        //回顯的數據
         const {_id: categoryId, name: categoryName} = item;
-        //显示模态框，并将回显数据放到状态中
+        //顯示模態框，並將回顯數據放到狀態中
         this.setState({
             updateModalCurrentId: categoryId,
             updateModalCurrentValue: categoryName,
             operatorType: 1,
             isModalVisible: true
         }, () => {
-            //重置表单
+            //重置表單
             this.formRef.current.resetFields();
         })
     }
 
     /**
-     * 处理确认模态框
+     * 處理確認模態框
      */
-    handleOkModal = async () => {
+     handleOkModal = async () => {
         try {
-            //表单的统一验证
+            //表單的統一驗證
             const {categoryName} = await this.formRef.current.validateFields()
             this.setState({isLoading: false})
             const {operatorType} = this.state;
             if (operatorType === 0) {
-                //新增分类的逻辑
+                //新增分類的邏輯
                 this.handleAddCategory(categoryName);
-            } else {//修改分类
+            } else {//修改分類
                 const {updateModalCurrentId: categoryId} = this.state;
-                //修改分类的逻辑
+                //修改分類的邏輯
                 this.handleUpdateCategory(categoryId, categoryName)
             }
         } catch (e) {
-            message.error('表单输入有误，请检查', 2);
+            message.error('表單輸入有誤，請檢查', 2);
         }
     }
 
     /**
-     * 新增分类的业务逻辑
+     * 新增分類的業務邏輯
      */
-    handleAddCategory = async (categoryName) => {
+     handleAddCategory = async (categoryName) => {
         const {status, msg} = await reqAddCategory(categoryName);
         if (status === 0) {
             message.success('新增商品分類名稱成功', 1);
             this.getCategoryList();
-            //重置表单
+            //重置表單
             this.formRef.current.resetFields();
-            //隐藏模态框
+            //隱藏模態框
             this.setState({isModalVisible: false})
         } else {
             message.error(msg, 1);
@@ -115,16 +115,16 @@ class Category extends Component {
     }
 
     /**
-     * 修改分类的业务逻辑
+     * 修改分類的業務邏輯
      */
-    handleUpdateCategory = async (categoryId, categoryName) => {
+     handleUpdateCategory = async (categoryId, categoryName) => {
         const {status, msg} = await reqUpdateCategory(categoryId, categoryName);
         if (status === 0) {
             message.success('更新商品分類名稱成功', 1);
             this.getCategoryList();
-            //重置表单
+            //重置表單
             this.formRef.current.resetFields();
-            //隐藏模态框
+            //隱藏模態框
             this.setState({isModalVisible: false})
         } else {
             message.error(msg, 1);
@@ -133,12 +133,12 @@ class Category extends Component {
 
 
     /**
-     * 取消模态框
+     * 取消模態框
      */
-    handleCancelModal = () => {
-        //重置表单
+     handleCancelModal = () => {
+        //重置表單
         this.formRef.current.resetFields();
-        //隐藏模态框
+        //隱藏模態框
         this.setState({isModalVisible: false});
     }
 
@@ -191,7 +191,7 @@ class Category extends Component {
                     <Table className="table" bordered={true} dataSource={dataSource} columns={columns} loading={isLoading} rowKey="_id"
                            pagination={{defaultPageSize: PAGE_SIZE, showQuickJumper: true, position:['bottomCenter']}} />   
                 </Card>
-                {/* 新增分类和修改分类 */}
+                {/* 新增分類和修改分類 */}
                 <Modal title={`${title}分類`} visible={isModalVisible} onOk={this.handleOkModal}
                        onCancel={this.handleCancelModal} okText="確認" cancelText="取消">
                     <Form className="login-form" ref={this.formRef}

@@ -19,7 +19,7 @@ import {connect} from "react-redux";
 const {Footer, Sider, Content} = Layout;
 
 /**
- * 后台管理主路由组件
+ * 後台管理主路由組件
  */
 @connect(
     state => ({userInfo: state.login})
@@ -31,7 +31,7 @@ class Admin extends Component {
     render() {
         const {isLogin} = this.props.userInfo;
         if (!isLogin) {
-            //如果没有登录，跳转到登录页面
+            //如果沒有登錄，跳轉到登錄頁面
             return <Redirect to="/login"/>
         }
         return (

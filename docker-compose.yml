@@ -1,39 +1,38 @@
 # 描述Compose文件的版本信息
 version: '3.8'
 
-# 定义服务，可以多个
+# 定義服務，可以多個
 services:
   react-admin-server:
-    build: # 指定根据哪个Dockerfile构建容器
+    build: # 指定根據哪個Dockerfile構建容器
       context: ./
       dockerfile: react-admin-server/Dockerfile
-    image: react-admin-server  #镜像名称
+    image: react-admin-server  #鏡像名稱
     container_name: react-admin-server
     environment:
       - TZ=Asia/Shanghai
     command:
       - --rm
-    ports: # 宿主机和容器的端口映射关系
-      - "5000:5000" # 左边宿主机端口:右边容器端口
-    networks: # 配置容器连接的网络，引用顶级networks下的条目
+    ports: # 宿主機和容器的端口映射關係
+      - "5000:5000" # 左邊宿主機端口:右邊容器端口
+    networks: # 配置容器連接的網絡，引用頂級networks下的條目
       - backend
     restart: always
     depends_on:
       - mongodb
-  mongodb: # mysql服务
+  mongodb: # mysql服務
     image: mongo
     container_name: mongo
     # environment:
       # - MONGO_INITDB_ROOT_USERNAME=root
       # - MONGO_INITDB_ROOT_PASSWORD=123456
-    ports: # 宿主机和容器的端口映射关系
-      - "27017:27017" # 左边宿主机端口:右边容器端口
-    networks: # 配置容器连接的网络，引用顶级networks下的条目
+    ports: # 宿主機和容器的端口映射關係
+      - "27017:27017" # 左邊宿主機端口:右邊容器端口
+    networks: # 配置容器連接的網絡，引用頂級networks下的條目
       - backend
     restart: always
-# 定义网络，可以多个，如果不声明，默认会创建一个网络名称为“工程名称_default”的bridge网络
+# 定義網絡，可以多個，如果不聲明，默認會創建一個網絡名稱為“工程名稱_default”的bridge網絡
 networks:
-  backend: # 一个具体网络的条目名称
-    name: backend # 网络名称，默认为“工程名称_网络条目名称”
-    driver: bridge # 网络模式，默认为bridge
-
+  backend: # 一個具體網絡的條目名稱
+    name: backend # 網絡名稱，默認為“工程名稱_網絡條目名稱”
+    driver: bridge # 網絡模式，默認為bridge

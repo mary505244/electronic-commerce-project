@@ -1,5 +1,5 @@
 /*
-用来定义路由的路由器模块
+用來定義路由的路由器模塊
  */
 const express = require('express')
 const md5 = require('blueimp-md5')
@@ -10,17 +10,17 @@ const UserModel = require('../models/UserModel')
 const RoleModel = require('../models/RoleModel')
 
 
-// 得到路由器对象
+// 得到路由器對象
 const router = express.Router()
 
-// 登陆
+// 登陸
 router.post('/login', (req, res) => {
   const {username, password} = req.body
-  // 根据username和password查询数据库users, 如果没有, 返回提示错误的信息, 如果有, 返回登陆成功信息(包含user)
+  // 根據username和password查詢數據庫users, 如果沒有, 返回提示錯誤的信息, 如果有, 返回登陸成功信息(包含user)
   UserModel.findOne({username, password: md5(password)}, {password: 0, __v: 0})
     .then(user => {
-      if (user) { // 登陆成功
-        //签发token 指定过期时间 7 天  expiresIn: '7 days'
+      if (user) { // 登陸成功
+        //簽發token 指定過期時間 7 天  expiresIn: '7 days'
         const token = jwt.sign({id: user._id}, PRIVATE_KEY, { expiresIn: '7 days' });
         //const token = jwt.sign({id: user._id}, PRIVATE_KEY, { expiresIn: '15 s' });
 
@@ -28,7 +28,7 @@ router.post('/login', (req, res) => {
           RoleModel.findOne({_id: user.role_id})
             .then(role => {
               user._doc.role = role
-              // 返回登陆成功信息(包含user和token)
+              // 返回登陸成功信息(包含user和token)
               res.send({
                 status: 0,
                 data: {
@@ -39,7 +39,7 @@ router.post('/login', (req, res) => {
             })
         } else {
           user._doc.role = {menus: []}
-          // 返回登陆成功信息(包含user和token)
+          // 返回登陸成功信息(包含user和token)
           res.send({
             status: 0,
             data: {
@@ -49,7 +49,7 @@ router.post('/login', (req, res) => {
           })
         }
 
-      } else {// 登陆失败
+      } else {// 登陸失敗
         res.send({status: 1, msg: '帳號或密碼不正確ㄛ！'})
       }
     })

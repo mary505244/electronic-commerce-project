@@ -22,22 +22,22 @@ const {Item} = Form
  class Login extends Component {
 
      /**
-     * 提交表单且数据验证成功后回调事件
+     * 提交表單且數據驗證成功後回調事件
      * @param values
      */
 
-     onFinish = async(values) => {
+      onFinish = async(values) => {
         const {username, password} = values;
         let result = await reqLogin(username, password);
         // console.log(result);
         const {status, msg} = result;
         if (status === 0) {
-            //服务器返回的user信息和token信交由redux管理
+            //服務器返回的user信息和token信交由redux管理
             const {user, token} = result.data;
             this.props.saveUserAndToken({user, token});
-            //提示登录成功
+            //提示登錄成功
             message.success('登入成功！');
-            //跳转到admin页面
+            //跳轉到admin頁面
             this.props.history.replace("/admin/home");
             // this.props.history.replace("/admin");
         } else {

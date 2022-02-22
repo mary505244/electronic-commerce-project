@@ -1,19 +1,19 @@
 /*
-* 导航菜单配置
+* 導航菜單配置
 */
 const menuList = [
     {
-        title: '首頁', //* 菜单标题名称
-        key: 'home', //展开的key
-        path: '/admin/home', //* 对应的path
-        icon: 'HomeOutlined' //* 图标组件名称
+        title: '首頁', //* 菜單標題名稱
+        key: 'home', //展開的key
+        path: '/admin/home', //* 對應的path
+        icon: 'HomeOutlined' //* 圖標組件名稱
     },
     {
         title: '商品',
         key: 'products',
         path: '/admin/products',
         icon: 'GiftOutlined',
-        children: [ //* 子菜单列表
+        children: [ //* 子菜單列表
             {
                 title: '商品分類管理',
                 key: 'category',

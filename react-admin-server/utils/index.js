@@ -1,5 +1,5 @@
 /*
-得到指定数组的分页信息对象
+得到指定數組的分頁信息對象
  */
 function pageFilter(arr, pageNum, pageSize) {
   pageNum = pageNum * 1

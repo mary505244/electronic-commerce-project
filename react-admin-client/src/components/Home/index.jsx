@@ -28,7 +28,7 @@ import './index.less';
 
 
 /**
- * 首页路由组件
+ * 首頁路由組件
  */
 export default class Home extends Component {
     render() {
@@ -60,19 +60,7 @@ export default class Home extends Component {
                     onSwiper={(swiper) => console.log(swiper)}
                     onSlideChange={() => console.log('slide change')}
                 >
-                {[home0, home1, home2,home3,home4,home5,home6,home7,home8,home9,home10
-                    // 'https://dg9ugnb21lig7.cloudfront.net/uploads/product_image/94908/1/_250x250_94908_20210603105232QWKftQecXq.jpg',
-                    // 'https://dg9ugnb21lig7.cloudfront.net/uploads/product_image/94908/1/_250x250_94908_20211019055546BuPgIZNqMN.jpg',
-                    // 'https://dg9ugnb21lig7.cloudfront.net/uploads/product_image/94908/1/_250x250_94908_20210603105230ysNKSsrRFV.png',
-                    // 'https://dg9ugnb21lig7.cloudfront.net/uploads/product_image/94908/1/_250x250_94908_20211019055546FhSlLdYTAT.jpg',
-                    // 'https://dg9ugnb21lig7.cloudfront.net/uploads/product_image/88103/2/_160x160_19156.jpg',
-                    // 'https://dg9ugnb21lig7.cloudfront.net/uploads/product_image/88103/1/_160x160_88103_20200803065413FVEXoFtncA.jpg',
-                    // 'https://dg9ugnb21lig7.cloudfront.net/uploads/product_image/88103/2/_160x160_22137.jpg',
-                    // 'https://dg9ugnb21lig7.cloudfront.net/uploads/product_image/88103/2/_160x160_21576.jpg',
-                    // 'https://dg9ugnb21lig7.cloudfront.net/uploads/product_image/88103/2/_160x160_21572.jpg'
-                    
-                ].map((i, el) => {
-                    console.log(i, el)
+                {[home0,home1,home2,home3,home4,home5,home6,home7,home8,home9,home10].map((i, el) => {
                     return <SwiperSlide key={el}><img src={i} alt=""  style={{ display:'block', width:'100%'}}/></SwiperSlide>;
                 })}
                 </Swiper>
@@ -88,9 +76,7 @@ export default class Home extends Component {
                         '弱酸性','身體按摩油'
                         
                         ].map((i, el) => {
-                            // console.log(i, el)
                             let tag = 'tag'+ Math.floor(Math.random()*3+1);
-                            console.log(tag)
                             return <li key={el}><a href="#" className={tag}>{i}</a></li>;
                         })}
                     </ul>

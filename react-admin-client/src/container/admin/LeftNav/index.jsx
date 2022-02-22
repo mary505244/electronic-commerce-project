@@ -12,7 +12,7 @@ import menuList from "../../../config/menuConfig";
 const {SubMenu} = Menu;
 
 /**
- * 左侧导航的组件
+ * 左側導航的組件
  */
 @connect(
     state => ({userInfo: state.login}),
@@ -24,8 +24,8 @@ const {SubMenu} = Menu;
 class LeftNav extends Component {
 
     /**
-     * 根据menu的数据数组生成对应的标签数组
-     * 使用map()+递归调用
+     * 根據menu的數據數組生成對應的標籤數組
+     * 使用map()+遞歸調用
      *
      * @param menuList
      */
@@ -34,10 +34,10 @@ class LeftNav extends Component {
             /*
             * menu:
             *  {
-            *        title: '首页', //* 菜单标题名称
-            *        path: '/home', //* 对应的path
-            *        icon: 'HomeOutlined', //* 图标组件名称
-            *        children:[] //可能有，也有可能没有
+            *        title: '首頁', //* 菜單標題名稱
+            *        path: '/home', //* 對應的path
+            *        icon: 'HomeOutlined', //* 圖標組件名稱
+            *        children:[] //可能有，也有可能沒有
             *  },
             */
             const icon = React.createElement(Icon[menu.icon], {}, null);
@@ -60,9 +60,9 @@ class LeftNav extends Component {
     }
 
     /**
-     * 获取selectedKey
+     * 獲取selectedKey
      *
-     * 遍历整个menuList，模糊匹配获取最近的路由key
+     * 遍歷整個menuList，模糊匹配獲取最近的路由key
      * @param {*} pathname
      * @param {*} menuList
      */
@@ -100,11 +100,11 @@ class LeftNav extends Component {
             newMenuList = menuList;
         }
         console.log(newMenuList);
-        //当前的路由
+        //當前的路由
         const {pathname} = this.props.location;
-        //根据当前的路由去菜单配置列表中寻找选中的key
+        //根據當前的路由去菜單配置列表中尋找選中的key
         let selectedKey = this.selectedKey(pathname, newMenuList);
-        //默认打开的菜单
+        //默認打開的菜單
         let openKeys = pathname.split('/').splice(1);
         return (
             <div className="left-nav">

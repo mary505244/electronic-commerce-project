@@ -16,16 +16,16 @@ function getBase64(file) {
 
 export default class PicturesWall extends Component {
     state = {
-        previewVisible: false, //是在展示预览窗
-        previewImage: '', //要预览的图片的地址或base64地址
+        previewVisible: false, //是在展示預覽窗
+        previewImage: '', //要預覽的圖片的地址或base64地址
         previewTitle: '',
         fileList: [],
     };
 
-    //关闭预览窗
+    //關閉預覽窗
     handleCancel = () => this.setState({previewVisible: false});
 
-    //展示预览窗
+    //展示預覽窗
     handlePreview = async (file) => {
         if (!file.url && !file.preview) {
             file.preview = await getBase64(file.originFileObj);
@@ -38,7 +38,7 @@ export default class PicturesWall extends Component {
         });
     };
 
-    //获取该商品对应的图片名字，构建一个数字，供新增商品使用
+    //獲取該商品對應的圖片名字，構建一個數字，供新增商品使用
     getImgArr = () => {
         let result = [];
         const {fileList} = this.state;
@@ -48,7 +48,7 @@ export default class PicturesWall extends Component {
         return result;
     }
 
-    //回显图片
+    //回顯圖片
     setImgArr = (imgs) => {
         let fileList = [];
         imgs.forEach((img, index) => {
@@ -65,30 +65,30 @@ export default class PicturesWall extends Component {
     }
 
 
-    //图片状态发生改变的回调
-    handleChange = async ({file, fileList}) => {
-        //如果文件上传成功
-        if (file.status === 'done') {
-            const {status, data} = file.response;
-            if (status === 0) {
-                const {url, name} = data;
-                file.url = url;
-                file.name = name;
-            }
-        } else if (file.status === 'removed') {
-            //获取要删除文件的名称
-            const {name} = file;
-            //删除图片
-            const {status, msg} = await reqDeletePicture(name);
-            if (status === 0) {
-                message.success("文件删除成功", 2);
-            } else {
-                message.error(msg, 2);
-            }
-
+   //圖片狀態發生改變的回調
+   handleChange = async ({file, fileList}) => {
+    //如果文件上傳成功
+    if (file.status === 'done') {
+        const {status, data} = file.response;
+        if (status === 0) {
+            const {url, name} = data;
+            file.url = url;
+            file.name = name;
         }
-        this.setState({fileList})
-    };
+    } else if (file.status === 'removed') {
+        //獲取要刪除文件的名稱
+        const {name} = file;
+        //刪除圖片
+        const {status, msg} = await reqDeletePicture(name);
+        if (status === 0) {
+            message.success("文件刪除成功", 2);
+        } else {
+            message.error(msg, 2);
+        }
+
+    }
+    this.setState({fileList})
+};
 
     render() {
         const {previewVisible, previewImage, fileList, previewTitle} = this.state;
@@ -103,14 +103,14 @@ export default class PicturesWall extends Component {
         return (
             <Fragment>
                 <Upload
-                    action={`${BASE_URL}/manage/img/upload`} //action：接收图片服务器的地址
+                    action={`${BASE_URL}/manage/img/upload`} //action：接收圖片服務器的地址
                     method={"POST"}
                     name="image"
-                    listType="picture-card" //listType：照片墙的展示方式
-                    fileList={fileList} // fileList：图片列表 {uid:xxx,name:xxx,status:xxx,url:xxx}
-                    onPreview={this.handlePreview} //onPreview：点击预览按钮的回调
-                    onChange={this.handleChange} //onChange：图片状态改变的回调（图片上传中，图片被删除、图片成功上传）
-                    headers={{Authorization: token}} //上传所需额外参数或返回上传额外参数的方法
+                    listType="picture-card" //listType：照片牆的展示方式
+                    fileList={fileList} // fileList：圖片列表 {uid:xxx,name:xxx,status:xxx,url:xxx}
+                    onPreview={this.handlePreview} //onPreview：點擊預覽按鈕的回調
+                    onChange={this.handleChange} //onChange：圖片狀態改變的回調（圖片上傳中，圖片被刪除、圖片成功上傳）
+                    headers={{Authorization: token}} //上傳所需額外參數或返回上傳額外參數的方法
                 >
                     {fileList.length >= 6 ? null : uploadButton}
                 </Upload>
