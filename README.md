@@ -3,8 +3,8 @@
 * 後端（react-admin-server）：使用`Node` + `Express` + `MongoDB`等技術。
 
 
-# 後端服務（react-admin-server）使用 docker-compose 構建
-* 搭建 Docker 和 Docker-Compose 略。
+# 後端服務（react-admin-server）
+* 使用搭建 Docker 和 Docker-Compose。
 * 部署完畢後，會發現沒有測試數據，將 [admin_db.sql] 執行一下。
 
 
